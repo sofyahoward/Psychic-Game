@@ -4,23 +4,22 @@ window.onload = function () {
           'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
           't', 'u', 'v', 'w', 'x', 'y', 'z'];
     
-    var categories;         // Array of topics
-    var chosenCategory;     // Selected catagory
-    var getHint ;          // Word getHint
-    var word ;              // Selected word
-    var guess ;             // Geuss
-    var geusses = [ ];      // Stored geusses
-    var lives ;             // Lives
-    var counter ;           // Count correct geusses
-    var space;              // Number of spaces in word '-'
+    var categories;         
+    var chosenCategory;     
+    var getHint ;          
+    var word ;            
+    var guess ;           
+    var guesses = [ ];      
+    var lives ;             
+    var counter ;         
+    var space;              
   
-    // Get elements
     var showLives = document.getElementById("mylives");
     var showCatagory = document.getElementById("scatagory");
     var getHint = document.getElementById("hint");
     var showClue = document.getElementById("clue");
   
-    // create alphabet ul
+   
     var buttons = function () {
       myButtons = document.getElementById('buttons');
       letters = document.createElement('ul');
@@ -36,8 +35,6 @@ window.onload = function () {
       }
     }
       
-    
-    // Select Catagory
     var selectCat = function () {
       if (chosenCategory === categories[0]) {
         categoryName.innerHTML = "The Chosen Category Is Movies";
@@ -48,7 +45,6 @@ window.onload = function () {
       }
     }
   
-    // Create geusses ul
      result = function () {
       wordHolder = document.getElementById('hold');
       correct = document.createElement('ul');
@@ -64,52 +60,45 @@ window.onload = function () {
           guess.innerHTML = "_";
         }
   
-        geusses.push(guess);
+        guesses.push(guess);
         wordHolder.appendChild(correct);
         correct.appendChild(guess);
       }
     }
     
-    // Show lives
      comments = function () {
       showLives.innerHTML = "You have " + lives + " lives";
       if (lives < 1) {
         showLives.innerHTML = "Game Over";
       }
-      for (var i = 0; i < geusses.length; i++) {
-        if (counter + space === geusses.length) {
+      for (var i = 0; i < guesses.length; i++) {
+        if (counter + space === guesses.length) {
           showLives.innerHTML = "You Win!";
         }
       }
     }
   
-   
-  
-    // OnClick Function
      check = function () {
       list.onclick = function () {
-        var geuss = (this.innerHTML);
+        var guess = (this.innerHTML);
         this.setAttribute("class", "active");
         this.onclick = null;
         for (var i = 0; i < word.length; i++) {
-          if (word[i] === geuss) {
-            geusses[i].innerHTML = geuss;
+          if (word[i] === guess) {
+            guesses[i].innerHTML = guess;
             counter += 1;
           } 
         }
-        var j = (word.indexOf(geuss));
+        var j = (word.indexOf(guess));
         if (j === -1) {
           lives -= 1;
           comments();
-        //   animate();
         } else {
           comments();
         }
       }
     }
     
-      
-    // Play
     play = function () {
       categories = [
           ["avengers", "ant-man", "skyscraper", "incredibles", "smallfoot"],
@@ -123,20 +112,16 @@ window.onload = function () {
       console.log(word);
       buttons();
   
-      geusses = [ ];
+      guesses = [ ];
       lives = 10;
       counter = 0;
       space = 0;
       result();
       comments();
       selectCat();
-      
     }
-  
     play();
-    
-    // Hint
-  
+
       hint.onclick = function() {
   
         hints = [
@@ -147,150 +132,144 @@ window.onload = function () {
   
       var catagoryIndex = categories.indexOf(chosenCategory);
       var hintIndex = chosenCategory.indexOf(word);
-      showClue.innerHTML = "Clue: " +  hints [catagoryIndex][hintIndex];
+      showClue.innerHTML = "Clue: - " +  hints [catagoryIndex][hintIndex];
     };
-  
-     // Reset
   
     document.getElementById('reset').onclick = function() {
       correct.parentNode.removeChild(correct);
       letters.parentNode.removeChild(letters);
       showClue.innerHTML = "";
-    //   context.clearRect(0, 0, 400, 400);
       play();
     }
-   
-   
-   
-    
-    
-function Particle( x, y, radius ) {
-	this.init( x, y, radius );
-}
 
-Particle.prototype = {
+    // PARTICLE EFFECT WITH SKETCH.JS FOR MOVING INTERACTIVE BACKGROUND
+    function Particle( x, y, radius ) {
+        this.init( x, y, radius );
+    }
 
-	init: function( x, y, radius ) {
+    Particle.prototype = {
 
-		this.alive = true;
+        init: function( x, y, radius ) {
 
-		this.radius = radius || 10;
-		this.wander = 0.15;
-		this.theta = random( TWO_PI );
-		this.drag = 0.92;
-		this.color = '#fff';
+            this.alive = true;
 
-		this.x = x || 0.0;
-		this.y = y || 0.0;
+            this.radius = radius || 10;
+            this.wander = 0.15;
+            this.theta = random( TWO_PI );
+            this.drag = 0.92;
+            this.color = '#fff';
 
-		this.vx = 0.0;
-		this.vy = 0.0;
-	},
+            this.x = x || 0.0;
+            this.y = y || 0.0;
 
-	move: function() {
+            this.vx = 0.0;
+            this.vy = 0.0;
+        },
 
-		this.x += this.vx;
-		this.y += this.vy;
+        move: function() {
 
-		this.vx *= this.drag;
-		this.vy *= this.drag;
+            this.x += this.vx;
+            this.y += this.vy;
 
-		this.theta += random( -0.5, 0.5 ) * this.wander;
-		this.vx += sin( this.theta ) * 0.1;
-		this.vy += cos( this.theta ) * 0.1;
+            this.vx *= this.drag;
+            this.vy *= this.drag;
 
-		this.radius *= 0.96;
-		this.alive = this.radius > 0.5;
-	},
+            this.theta += random( -0.5, 0.5 ) * this.wander;
+            this.vx += sin( this.theta ) * 0.1;
+            this.vy += cos( this.theta ) * 0.1;
 
-	draw: function( ctx ) {
+            this.radius *= 0.96;
+            this.alive = this.radius > 0.5;
+        },
 
-		ctx.beginPath();
-		ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
-		ctx.fillStyle = this.color;
-		ctx.fill();
-	}
-};
+        draw: function( ctx ) {
 
-// ----------------------------------------
-// Example
-// ----------------------------------------
+            ctx.beginPath();
+            ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    };
 
-var MAX_PARTICLES = 280;
-var COLOURS = [ '#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423' ];
+    // ----------------------------------------
+    // Example
+    // ----------------------------------------
 
-var particles = [];
-var pool = [];
+    var MAX_PARTICLES = 280;
+    var COLOURS = [ '#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423' ];
 
-var demo = Sketch.create({
-	container: document.getElementById( 'container' )
-});
+    var particles = [];
+    var pool = [];
 
-demo.setup = function() {
+    var demo = Sketch.create({
+        container: document.getElementById( 'container' )
+    });
 
-	// Set off some initial particles.
-	var i, x, y;
+    demo.setup = function() {
 
-	for ( i = 0; i < 20; i++ ) {
-		x = ( demo.width * 0.5 ) + random( -100, 100 );
-		y = ( demo.height * 0.5 ) + random( -100, 100 );
-		demo.spawn( x, y );
-	}
-};
+        // Set off some initial particles.
+        var i, x, y;
 
-demo.spawn = function( x, y ) {
+        for ( i = 0; i < 20; i++ ) {
+            x = ( demo.width * 0.5 ) + random( -100, 100 );
+            y = ( demo.height * 0.5 ) + random( -100, 100 );
+            demo.spawn( x, y );
+        }
+    };
 
-	if ( particles.length >= MAX_PARTICLES )
-		pool.push( particles.shift() );
+    demo.spawn = function( x, y ) {
 
-	particle = pool.length ? pool.pop() : new Particle();
-	particle.init( x, y, random( 5, 40 ) );
+        if ( particles.length >= MAX_PARTICLES )
+            pool.push( particles.shift() );
 
-	particle.wander = random( 0.5, 2.0 );
-	particle.color = random( COLOURS );
-	particle.drag = random( 0.9, 0.99 );
+        particle = pool.length ? pool.pop() : new Particle();
+        particle.init( x, y, random( 5, 40 ) );
 
-	theta = random( TWO_PI );
-	force = random( 2, 8 );
+        particle.wander = random( 0.5, 2.0 );
+        particle.color = random( COLOURS );
+        particle.drag = random( 0.9, 0.99 );
 
-	particle.vx = sin( theta ) * force;
-	particle.vy = cos( theta ) * force;
+        theta = random( TWO_PI );
+        force = random( 2, 8 );
 
-	particles.push( particle );
-}
+        particle.vx = sin( theta ) * force;
+        particle.vy = cos( theta ) * force;
 
-demo.update = function() {
+        particles.push( particle );
+    }
 
-	var i, particle;
+    demo.update = function() {
 
-	for ( i = particles.length - 1; i >= 0; i-- ) {
+        var i, particle;
 
-		particle = particles[i];
+        for ( i = particles.length - 1; i >= 0; i-- ) {
 
-		if ( particle.alive ) particle.move();
-		else pool.push( particles.splice( i, 1 )[0] );
-	}
-};
+            particle = particles[i];
 
-demo.draw = function() {
+            if ( particle.alive ) particle.move();
+            else pool.push( particles.splice( i, 1 )[0] );
+        }
+    };
 
-	demo.globalCompositeOperation  = 'lighter';
-	
-	for ( var i = particles.length - 1; i >= 0; i-- ) {
-		particles[i].draw( demo );
-	}
-};
+    demo.draw = function() {
 
-demo.mousemove = function() {
+        demo.globalCompositeOperation  = 'lighter';
+        
+        for ( var i = particles.length - 1; i >= 0; i-- ) {
+            particles[i].draw( demo );
+        }
+    };
 
-	var particle, theta, force, touch, max, i, j, n;
+    demo.mousemove = function() {
 
-	for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+        var particle, theta, force, touch, max, i, j, n;
 
-		touch = demo.touches[i], max = random( 1, 4 );
-		for ( j = 0; j < max; j++ ) demo.spawn( touch.x, touch.y );
-	}
-};
+        for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+
+            touch = demo.touches[i], max = random( 1, 4 );
+            for ( j = 0; j < max; j++ ) demo.spawn( touch.x, touch.y );
+        }
+    };
 
 
 }

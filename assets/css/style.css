@@ -27,8 +27,8 @@ body {
  } 
 
 .wrappper{
-  width:70%;
-  margin:0 auto;
+    width:70%;
+    margin:0 auto;
 }
 
 #info {
@@ -91,70 +91,43 @@ body {
   }
       
   #alphabet li:hover{
-        background: #c2f8fc;
-        border: solid 1px white;
-        color: #302f29;
+    background: #c2f8fc;
+    border: solid 1px white;
+    color: #302f29;
       }
-      button{
-        border-radius: 5px;
-        background: #ffee71;
-        color: #302f29;
-        border: solid 1px white;
-        text-decoration:none;
-        cursor:pointer;
-        font-size:1.2em;
-        padding:18px 10px;
-        width:280px;
-        margin: 10px;
-        outline: none;
-      }
-      button:hover{
-            background: white;
-            border: solid 1px white;
-            color:#302f29;
+button{
+    border-radius: 5px;
+    background: #ffee71;
+    color: #302f29;
+    border: solid 1px white;
+    text-decoration:none;
+    cursor:pointer;
+    font-size:1.2em;
+    padding:18px 10px;
+    width:280px;
+    margin: 10px;
+    outline: none;
+    }
+button:hover{
+    background: #c2f8fc;
+    border: solid 1px white;
+    color:#302f29;
           }
-      #clue , #mylives, #hold, #categoryName{
-          padding: 1%;
-      }
-      p {
-          text-transform: uppercase;
-          text-align: center;
-          font-size: 28px;
-          position: absolute;
-          width: 100%;
-          color: #fff;
-      }
-      #mylives{
-        font-size:1.6em;
-        text-align:center;
-        display:block;
-      }
-  
-h1, h2, h3 {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 100;
-	text-transform: uppercase;
-   margin:5px 0;
-}
+#clue , #mylives, #hold, #categoryName{
+    padding: 1%;
+    }
 
-h1 {
-	font-size: 2.6em;
-}
-
-h2 {
-	font-size: 1.6em;
-}
-
-p{
-  font-size: 1.6em;
-}
+#mylives{
+    font-size:1.6em;
+    text-align:center;
+    display:block;
+    }
 
 #alphabet {
   margin:15px auto;
   padding:0;
   max-width:900px;
 }
-
 
 #my-word {
   margin: 0;
@@ -171,12 +144,6 @@ p{
   padding: 0 10px;
   font-size:1.6em;
 }
-
-#my-word li.active {
-  opacity:0.5;
-  cursor:default;
-}
-
 
 @media (max-width: 767px) {
     #alphabet {
