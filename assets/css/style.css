@@ -1,0 +1,190 @@
+body {
+	background: #425370;
+    margin: 0;
+}
+
+.title{
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 40px;
+}
+#hint {
+    font-family: 'Fredericka the Great', cursive;
+}
+#reset{
+    font-family: 'Fredericka the Great', cursive;
+}
+.description{
+    font-family: 'Josefin Slab', serif;
+    font-size: 25px;
+    padding-top: 2%;
+}
+#fullContainer {
+    width: 80%;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+ } 
+
+.wrappper{
+  width:70%;
+  margin:0 auto;
+}
+
+#info {
+	position: absolute;
+	left: 15%;
+    top: 15%;
+    right: 15%;
+}
+
+#info {
+    background:#1d2533;
+    opacity: 0.8;
+	padding: 12px 10px;
+	margin-bottom: 1px;
+	color: #fff;
+}
+
+#info h1 {
+	line-height: 22px;
+	font-weight: 300;
+	font-size: 18px;
+	margin: 0;
+}
+
+#info h2 {
+	line-height: 14px;
+	font-weight: 300;
+	font-size: 12px;
+	color: rgba(255,255,255,0.8);
+	margin: 0 0 6px 0;
+}
+
+#info a {
+	text-transform: uppercase;
+	text-decoration: none;
+	border-bottom: 1px dotted rgba(255,255,255,0.2);
+	margin-right: 4px;
+	line-height: 20px;
+	font-size: 10px;
+	color: rgba(255,255,255,0.5);
+}
+
+#info a:hover {
+	border-bottom: 1px dotted rgba(255,255,255,0.6);
+	color: rgba(255,255,255,1.0);
+}
+
+#alphabet li {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    list-style:none;
+    width:35px;
+    height:30px;
+    padding-top:10px;
+    background:#ffee71;
+    color: #302f29;
+    cursor:pointer;
+    border-radius: 5px;
+    border: solid 1px white;
+  }
+      
+  #alphabet li:hover{
+        background: #c2f8fc;
+        border: solid 1px white;
+        color: #302f29;
+      }
+      button{
+        border-radius: 5px;
+        background: #ffee71;
+        color: #302f29;
+        border: solid 1px white;
+        text-decoration:none;
+        cursor:pointer;
+        font-size:1.2em;
+        padding:18px 10px;
+        width:280px;
+        margin: 10px;
+        outline: none;
+      }
+      button:hover{
+            background: white;
+            border: solid 1px white;
+            color:#302f29;
+          }
+      #clue , #mylives, #hold, #categoryName{
+          padding: 1%;
+      }
+      p {
+          text-transform: uppercase;
+          text-align: center;
+          font-size: 28px;
+          position: absolute;
+          width: 100%;
+          color: #fff;
+      }
+      #mylives{
+        font-size:1.6em;
+        text-align:center;
+        display:block;
+      }
+  
+h1, h2, h3 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	text-transform: uppercase;
+   margin:5px 0;
+}
+
+h1 {
+	font-size: 2.6em;
+}
+
+h2 {
+	font-size: 1.6em;
+}
+
+p{
+  font-size: 1.6em;
+}
+
+#alphabet {
+  margin:15px auto;
+  padding:0;
+  max-width:900px;
+}
+
+
+#my-word {
+  margin: 0;
+  display: block;
+  padding: 0;
+  display:block;
+}
+
+#my-word li {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  display: inline-block;
+  padding: 0 10px;
+  font-size:1.6em;
+}
+
+#my-word li.active {
+  opacity:0.5;
+  cursor:default;
+}
+
+
+@media (max-width: 767px) {
+    #alphabet {
+    padding:0 0 0 15px;
+  }
+    }
+  
+    @media (max-width: 480px) {
+    #alphabet {
+    padding:0 0 0 25px;
+  } 
